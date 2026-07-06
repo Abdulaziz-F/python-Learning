@@ -2,8 +2,9 @@
 ''' Usually, a good prompts consist of 4 thing :
    1. ROLE: To specify the role of LLM, for example, "you are a Python expert", "you are a AI teacher".
    2. Task: what's require? , for example, "Exaplain SQL Injection".
-   3. Constraints: specify the condetion, for example, "Explain it in 150 words", "Use bullet points".
-   4. Output Format (optional): Return the answer as points/table. 
+   3. Extra details.
+   4. Constraints: specify the condetion, for example, "Explain it in 150 words", "Use bullet points".
+   5. Output Format (optional): Return the answer as points/table. 
 
 '''
 from google import genai
@@ -16,10 +17,7 @@ while flag == 'y':
     answer= input("What do u what to ask: ") 
     print()
     response = client.models.generate_content(
-        model="gemini-2.5-flash",#You are a python instructor,
-                                 #Explain Python to a complete beginner,
-                                 #use simple language, geve one real-life example,
-                                 #limite your answer to 120 words
+        model="gemini-2.5-flash",
         contents=answer, 
         config=types.GenerateContentConfig(temperature=temp)
     )
@@ -27,7 +25,24 @@ while flag == 'y':
     print(response.text)
     flag=input("Do u want to continue? (y/n) :")
 
-# here we notice the answer is more specific.
+''' 
+Role:
+You are a Python instructor.
+
+Task:
+Explain Python.
+
+Constraints:
+Use simple English.
+Limit your answer to 120 words.
+
+Output Format:
+Bullet points.
+
+Extra Details:
+The explanation is for a complete beginner
+
+'''
 
 
 
