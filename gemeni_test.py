@@ -13,15 +13,21 @@ flag ='y'
 while flag == 'y':
     client = genai.Client()
     temp=input("Detrmine the value: ")
-    answer= input("What do u what to ask: ")
+    answer= input("What do u what to ask: ") 
     print()
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=answer, # Explain Linux
+        model="gemini-2.5-flash",#You are a python instructor,
+                                 #Explain Python to a complete beginner,
+                                 #use simple language, geve one real-life example,
+                                 #limite your answer to 120 words
+        contents=answer, 
         config=types.GenerateContentConfig(temperature=temp)
     )
     #print(f"With temperature = {temp}")
     print(response.text)
     flag=input("Do u want to continue? (y/n) :")
 
-# here we notice the answer is more general.
+# here we notice the answer is more specific.
+
+
+
