@@ -2,6 +2,7 @@ from google import genai
 from google.genai import types
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
+from textwrap import wrap
 import json
 
 
@@ -13,6 +14,7 @@ def save_txt(summary):
 
 def save_pdf(summary):
     pdf = canvas.Canvas("summary.pdf", pagesize=A4)
+
     width, height = A4
 
     x = 50
@@ -20,7 +22,10 @@ def save_pdf(summary):
 
     pdf.setFont("Helvetica", 12)
 
-    for line in summary.split("\n"):
+    # Wrap long lines
+    lines = wrap(summary, width=90)
+
+    for line in lines:
         pdf.drawString(x, y, line)
         y -= 20
 
@@ -30,6 +35,7 @@ def save_pdf(summary):
             y = height - 50
 
     pdf.save()
+
     print("Saved as summary.pdf")
 
 
