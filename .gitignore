@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Streamlit secrets
+.streamlit/
+
+# Generated reports
+phishing_report.pdf
+phishing_report.txt
+summary.pdf
+summarize.txt
+
+# VS Code settings
+.vscode/
